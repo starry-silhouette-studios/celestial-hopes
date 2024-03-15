@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // 1
+        // 2
         rb2D = gameObject.GetComponent<Rigidbody2D>();
 
         moveSpeed = 3.0f;
