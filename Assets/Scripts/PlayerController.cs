@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
                 );
 
                 isJumping = true;
+
+                Debug.Log("Sander is een sukkel");
             }
         }
         else
