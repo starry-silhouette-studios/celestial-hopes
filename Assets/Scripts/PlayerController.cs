@@ -39,10 +39,18 @@ public class PlayerController : MonoBehaviour
 
         if (moveVertical != 0.0)
         {
-            rb2D.AddForce(
-                new Vector2(0.0f, moveVertical * jumpForce),
-                ForceMode2D.Impulse
-            );
+            if (isJumping != true) { 
+                rb2D.AddForce(
+                    new Vector2(0.0f, moveVertical * jumpForce),
+                    ForceMode2D.Impulse
+                );
+
+                isJumping = true;
+            }
+        }
+        else
+        {
+            isJumping = false;
         }
     }
 }
