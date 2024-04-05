@@ -1,58 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb2D;
-
-    private float moveSpeed;
-    private float jumpForce;
-    private bool isJumping;
+    public float moveSpeed;
+    public float jumpForce;
+    private Rigidbody2D rb;
     private float moveHorizontal;
-    private float moveVertical;
+    private bool isJumping = false;
 
     void Start()
     {
-        rb2D = gameObject.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
-        moveSpeed = 3.0f;
-        jumpForce = 3.0f;
-        isJumping = false;
+        moveSpeed = 20.0f;
+        jumpForce = 15.0f;
     }
     
     void Update()
     {
-        moveHorizontal = Input.GetAxisRaw("Horizontal");
-        moveVertical = Input.GetAxisRaw("Vertical");
+        moveHorizontal = Input.GetAxis("Horizontal") * moveSpeed;
+
+        if(Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f)
+        {
+            isJumping = true;
+        }
     }
 
     void FixedUpdate()
     {
-        if(moveHorizontal != 0.0)
-        {
-            rb2D.AddForce(
-                new Vector2(moveHorizontal * moveSpeed, 0.0f),
-                ForceMode2D.Impulse
-            );
-        }
+        Move();
 
-        if (moveVertical != 0.0)
+        if (isJumping)
         {
-            if (isJumping != true) { 
-                rb2D.AddForce(
-                    new Vector2(0.0f, moveVertical * jumpForce),
-                    ForceMode2D.Impulse
-                );
-
-                isJumping = true;
-
-                Debug.Log("Sander is een sukkel");
-            }
+            Jump();
         }
-        else
-        {
-            isJumping = false;
-        }
+    }
+
+    void Move()
+    {
+        Vector2 movement = new Vector2(moveHorizontal, rb.velocity.y);
+        rb.velocity = movement;
+    }
+
+    void Jump()
+    {
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        isJumping = false;
     }
 }
