@@ -20,6 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
         Debug.Log(GameManager.gameManager._playerHealth.Health);
     }
 
+    /// test
     private void PlayerTakeHeal(int healing)
     {
         GameManager.gameManager._playerHealth.HealUnit(healing);
