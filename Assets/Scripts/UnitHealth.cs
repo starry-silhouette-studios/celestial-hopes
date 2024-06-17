@@ -41,11 +41,16 @@ public class UnitHealth
     }
 
     // Methods
-    public void DmgUnit(int dmgAmount)
+    public void DmgUnit(int dmgAmount, GameObject gameObject)
     {
         if (_currentHealth > 0)
         {
             _currentHealth -= dmgAmount;
+
+            if (_currentHealth <= 0)
+            {
+                KillUnit(gameObject);
+            }
         }
     }
 
@@ -61,4 +66,21 @@ public class UnitHealth
         }
     }
 
+    public static void KillUnit(GameObject gameObject)
+    {
+        Animator animator = gameObject.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+
+        OnDeath(gameObject);
+    }
+
+    private static void OnDeath(GameObject gameObject)
+    {
+        Debug.Log(gameObject.name + " has been killed.");
+
+        GameObject.Destroy(gameObject, 2f);
+    }
 }

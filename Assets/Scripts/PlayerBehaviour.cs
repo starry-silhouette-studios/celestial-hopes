@@ -16,7 +16,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void PlayerTakeDmg (int dmg)
     {
-        GameManager.gameManager._playerHealth.DmgUnit(dmg);
+        GameManager.gameManager._playerHealth.DmgUnit(dmg, gameObject);
         Debug.Log(GameManager.gameManager._playerHealth.Health);
     }
 
