@@ -20,7 +20,14 @@ public class PlayerBehaviour : MonoBehaviour
         
         Debug.Log(GameManager.gameManager._playerHealth.Health);
     }
-    
+
+    private void HealPlayer(int healing)
+    {
+        GameManager.gameManager._playerHealth.HealUnit(healing);
+        
+        Debug.Log(GameManager.gameManager._playerHealth.Health);
+    }
+
     private void PlayerTakeHeal(int healing)
     {
         GameManager.gameManager._playerHealth.HealUnit(healing);
@@ -36,6 +43,16 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 PlayerTakeDmg(enemy.damageAmount);
             }
+        }
+
+        if (collision.gameObject.CompareTag("Healing"))
+        {
+            HealingBehaviour health= collision.gameObject.GetComponent<HealingBehaviour>();
+            if (health != null)
+            {
+                HealPlayer(health.healing);
+            }
+            GameObject.Destroy(collision.gameObject);
         }
     }
 }
