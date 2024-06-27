@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class FlorgBehaviour : MonoBehaviour
 {
-    // Public field to set the damage amount in the Inspector
     public int damageAmount = 10;
+    public int health = 50;
+    
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+    
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
 }

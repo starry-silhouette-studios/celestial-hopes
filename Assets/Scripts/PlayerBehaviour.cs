@@ -17,10 +17,10 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerTakeDmg (int dmg)
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg, gameObject);
+        
         Debug.Log(GameManager.gameManager._playerHealth.Health);
     }
-
-    /// test
+    
     private void PlayerTakeHeal(int healing)
     {
         GameManager.gameManager._playerHealth.HealUnit(healing);
@@ -31,6 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             FlorgBehaviour enemy = collision.gameObject.GetComponent<FlorgBehaviour>();
+            
             if (enemy != null)
             {
                 PlayerTakeDmg(enemy.damageAmount);

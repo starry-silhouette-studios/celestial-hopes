@@ -60,6 +60,7 @@ public class UnitHealth
         {
             _currentHealth += healAmount;
         }
+        
         if (_currentHealth > _currentMaxHealth)
         {
             _currentHealth = _currentMaxHealth;
@@ -69,6 +70,7 @@ public class UnitHealth
     public static void KillUnit(GameObject gameObject)
     {
         Animator animator = gameObject.GetComponent<Animator>();
+        
         if (animator != null)
         {
             animator.SetTrigger("Die");
