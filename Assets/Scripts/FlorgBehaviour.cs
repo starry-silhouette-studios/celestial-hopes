@@ -6,19 +6,13 @@ public class FlorgBehaviour : MonoBehaviour
 {
     public int damageAmount = 10;
     public int health = 50;
+    public float speed;
+    public GameObject player;
     
-    public void TakeDamage(int damage)
+    public void TakeDamage(int dmg)
     {
-        health -= damage;
-        
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-    
-    private void Die()
-    {
-        Destroy(gameObject);
+        GameManager.gameManager._playerHealth.DmgUnit(dmg, gameObject);
+
+        Debug.Log(GameManager.gameManager._playerHealth.Health);
     }
 }
