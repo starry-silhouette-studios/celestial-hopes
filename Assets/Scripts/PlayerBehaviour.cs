@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
-        
+
     }
 
     void Update()
@@ -18,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg, gameObject);
         
-        Debug.Log(GameManager.gameManager._playerHealth.Health);
+        Debug.Log(gameObject.name + " now has " + GameManager.gameManager._playerHealth.Health + " health");
     }
 
     private void HealPlayer(int healing)
