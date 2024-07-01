@@ -39,9 +39,6 @@ public class FlorgBehaviour : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
-        // Debug log to check velocity
-        Debug.Log("Velocity: " + rb.velocity.magnitude);
-
         if (distance <= 1 && isGrounded)
         {
             Jump();
