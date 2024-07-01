@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,13 +13,18 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 10;
+    
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         moveSpeed = 20.0f;
         jumpForce = 15.0f;
+        
+        animator.SetBool("isAttacking", false);
     }
     
     void Update()
@@ -28,7 +34,7 @@ public class PlayerController : MonoBehaviour
         if (moveHorizontal > 0.01f)
         {
             transform.localScale = new Vector3(1, 1, 1);
-        }
+        } 
         else if (moveHorizontal < -0.01f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -59,12 +65,25 @@ public class PlayerController : MonoBehaviour
     
     void Attack() 
     {
+        Debug.Log(animator.GetBool("isAttacking"));
+        
+        animator.SetBool("isAttacking", true);
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<FlorgBehaviour>().TakeDamage(attackDamage);
         }
+        
+        StartCoroutine(StopAttackAnimation());
+    }
+    
+    IEnumerator StopAttackAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+        animator.SetBool("isAttacking", false);
     }
     
     void OnDrawGizmosSelected()

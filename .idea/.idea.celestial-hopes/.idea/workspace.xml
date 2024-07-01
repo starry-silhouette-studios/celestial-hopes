@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dc51abe5-9784-4cf0-b32b-29031b27fc00" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.celestial-hopes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.celestial-hopes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Standalone Player.Start Unity.executor": "Run",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -111,6 +113,7 @@
       <workItem from="1718655700412" duration="10000" />
       <workItem from="1719514515593" duration="3044000" />
       <workItem from="1719522345823" duration="1080000" />
+      <workItem from="1719861234874" duration="4160000" />
     </task>
     <servers />
   </component>

@@ -47,11 +47,13 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Healing"))
         {
-            HealingBehaviour health= collision.gameObject.GetComponent<HealingBehaviour>();
+            HealingBehaviour health = collision.gameObject.GetComponent<HealingBehaviour>();
+            
             if (health != null)
             {
                 HealPlayer(health.healing);
             }
+            
             GameObject.Destroy(collision.gameObject);
         }
     }
