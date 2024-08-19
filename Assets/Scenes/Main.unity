@@ -279,7 +279,7 @@ Transform:
   m_GameObject: {fileID: 4247018}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.14, y: -0.69, z: 0}
+  m_LocalPosition: {x: 13.75, y: -1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11306,6 +11306,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &584423126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 584423127}
+  m_Layer: 0
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &584423127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584423126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.26, y: 0.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1973607295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &587080534
 GameObject:
   m_ObjectHideFlags: 3
@@ -11406,7 +11437,7 @@ GameObject:
   - component: {fileID: 622755797}
   - component: {fileID: 622755796}
   - component: {fileID: 622755795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11777,7 +11808,7 @@ GameObject:
   - component: {fileID: 1394129082}
   - component: {fileID: 1394129081}
   - component: {fileID: 1394129080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11917,7 +11948,7 @@ Transform:
   m_GameObject: {fileID: 1394129079}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 19.97, y: 2.08, z: 0}
+  m_LocalPosition: {x: -3.94, y: 2.08, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11948,7 +11979,7 @@ Transform:
   m_GameObject: {fileID: 1591724151}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: -0.19, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11966,7 +11997,7 @@ GameObject:
   - component: {fileID: 1592785069}
   - component: {fileID: 1592785068}
   - component: {fileID: 1592785067}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12106,7 +12137,7 @@ Transform:
   m_GameObject: {fileID: 1592785066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 12.22, y: 2.01, z: 0}
+  m_LocalPosition: {x: 5.36, y: 2.01, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12318,6 +12349,7 @@ Transform:
   m_Children:
   - {fileID: 1737768287}
   - {fileID: 1591724152}
+  - {fileID: 584423127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1973607296
@@ -12380,16 +12412,21 @@ MonoBehaviour:
   moveSpeed: 0
   jumpForce: 0
   attackPoint: {fileID: 1737768287}
-  attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64
-  attackDamage: 10
+  rb: {fileID: 1973607293}
+  wallCheck: {fileID: 584423127}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
   groundCheck: {fileID: 1591724152}
-  groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
+  attackRange: 0.5
+  attackDamage: 10
+  groundCheckRadius: 0.2
 --- !u!60 &1973607298
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12499,7 +12536,7 @@ GameObject:
   - component: {fileID: 2009819103}
   - component: {fileID: 2009819102}
   - component: {fileID: 2009819101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
